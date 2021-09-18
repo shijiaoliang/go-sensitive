@@ -167,3 +167,4 @@ type DeleteWordReply struct {
 }
 ```
   
+![image](https://user-images.githubusercontent.com/4861699/133887766-6050d21c-7b47-4d99-89cf-15917d077da2.png)
