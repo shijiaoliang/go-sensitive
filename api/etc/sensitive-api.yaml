@@ -1,0 +1,101 @@
+Name: sensitive-api
+Host: 0.0.0.0
+MaxBytes: 10485760
+Port: 8989
+
+# 是否打印详细http信息
+Verbose: false
+
+# dev|test|rt|pre|pro
+Mode: pro
+
+Log:
+  # console|file|volume
+  Mode: file
+  Compress: true
+  KeepDays: 30
+  Path: logs
+
+Sensitive:
+  #待检测文本最大长度 <[]rune>
+  MaxTxtLen: 200000
+  WordsFilePath: "etc/words/"
+  ChannelSensitiveMap:
+    edu_backend:
+      - contraband
+      - ad
+      - tort
+      - porn
+    hc3i_cms:
+      - contraband
+      - ad
+      - guanggaofa
+      - tort
+      - porn
+    blog_incr:
+      - contraband
+      - ad
+      - tort
+      - porn
+    history:
+      - contraband
+      - ad
+      - tort
+      - porn
+    blog:
+      - tmp
+      #- contraband
+      #- ad
+      #- tort
+      #- porn
+    blog_column:
+      - contraband
+      - ad
+      - tort
+      - porn
+    edu_check:
+      - contraband
+      - guanggaofa
+      - tort
+      - porn
+    site_cms:
+      - contraband
+      - ad
+      - guanggaofa
+      - tort
+      - porn
+    site_down:
+      - contraband
+      - ad
+      - tort
+      - porn
+    edu:
+      - contraband
+      - ad
+      - tort
+      - porn
+    site_bbs:
+      - contraband
+      - ad
+      - tort
+      - porn
+    interaction:
+      - contraband
+      - ad
+      - tort
+      - porn
+    hc3i_bbs:
+      - contraband
+      - ad
+      - guanggaofa
+      - tort
+      - porn
+    harmonyos:
+      - contraband
+      - ad
+      - tort
+      - porn
+  Cache:
+    Duration: 60
+    Name: "sensitive-result"
+    Limit: 5000

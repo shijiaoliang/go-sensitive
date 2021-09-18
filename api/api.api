@@ -1,0 +1,100 @@
+syntax = "v1"
+
+info(
+	author: "shijl"
+	date:   "2021-08-26"
+	desc:   "敏感词服务-api"
+)
+
+// =====validate=====
+type (
+	ValidateReq {
+		Txt  string `json:"txt"`
+		Hash string `json:"hash,optional"`
+	}
+
+	ValidateReply {
+		IsValidate bool   `json:"is_validate"`
+		BadWord    string `json:"bad_word"`
+	}
+)
+service sensitive-api {
+	@doc "验证是否包含敏感词"
+	@handler validate
+	post /sensitive/validate (ValidateReq) returns (ValidateReply)
+}
+
+// =====find=====
+type (
+	FindReq {
+		Txt     string `json:"txt"`
+		Channel string `json:"channel"`
+		Hash    string `json:"hash,optional"`
+	}
+
+	FindReply {
+		IsValidate bool                `json:"is_validate"`
+		BadWords   map[string][]string `json:"bad_words"`
+	}
+)
+service sensitive-api {
+	@doc "查找所有敏感词"
+	@handler find
+	post /sensitive/find (FindReq) returns (FindReply)
+}
+
+// =====batch-find=====
+type (
+	BatchItemReq {
+		DataId  string `json:"data_id"`
+		Txt     string `json:"txt"`
+		Channel string `json:"channel"`
+		Hash    string `json:"hash,optional"`
+	}
+	BatchFindReq {
+		Items []BatchItemReq `json:"items"`
+	}
+
+	BatchItemReply {
+		DataId     string              `json:"data_id"`
+		Hash       string              `json:"hash"`
+		IsValidate bool                `json:"is_validate"`
+		BadWords   map[string][]string `json:"bad_words"`
+	}
+	BatchFindReply {
+		Items map[string]BatchItemReply `json:"items"`
+	}
+)
+service sensitive-api {
+	@doc "批量查找所有敏感词"
+	@handler batchFind
+	post /sensitive/batch-find (BatchFindReq) returns (BatchFindReply)
+}
+
+// =====add-word=====
+type (
+	AddWordReq {
+		Words []string `json:"words"`
+	}
+	AddWordReply {
+	}
+)
+service sensitive-api {
+	@doc "批量新增敏感词"
+	@handler AddWord
+	post /sensitive/add-word (AddWordReq) returns (AddWordReply)
+}
+
+// =====delete-word=====
+type (
+	DeleteWordReq {
+		Words []string `json:"words"`
+	}
+	DeleteWordReply {
+	}
+)
+service sensitive-api {
+	@doc "批量删除敏感词"
+	@handler DeleteWord
+	post /sensitive/delete-word (DeleteWordReq) returns (DeleteWordReply)
+}
