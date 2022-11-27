@@ -6,6 +6,11 @@
 ### 运行
 
 ```
+git clone https://github.com/shijiaoliang/go-sensitive.git
+
+cd path/go-sensitive
+go mod tidy
+
 cd path/go-sensitive/api
 go run sensitive.go -f etc/sensitive-api.yaml
 ```
