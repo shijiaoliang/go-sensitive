@@ -171,7 +171,6 @@ type DeleteWordReq struct {
 type DeleteWordReply struct {
 }
 ```
-  
-![image](https://user-images.githubusercontent.com/4861699/133887766-6050d21c-7b47-4d99-89cf-15917d077da2.png)
+
 <img width="1050" alt="image" src="https://user-images.githubusercontent.com/4861699/204117949-8e8c597a-0853-43f8-87fd-3ca4aa876c9a.png">
 
